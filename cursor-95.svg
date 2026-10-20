@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="boltGrad" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF05A"/>
+      <stop offset="45%" stop-color="#FFD000"/>
+      <stop offset="80%" stop-color="#FF7B00"/>
+      <stop offset="100%" stop-color="#FF3300"/>
+    </linearGradient>
+    <linearGradient id="numGrad" x1="18" y1="36" x2="38" y2="18" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D91400"/>
+      <stop offset="50%" stop-color="#FF6A00"/>
+      <stop offset="100%" stop-color="#FFF04D"/>
+    </linearGradient>
+  </defs>
+  <!-- Black 3D Racing Shadow -->
+  <path d="M4 6 C18 8, 30 14, 38 22 L33 23 C42 31, 51 39, 60 44 C53 43, 48 41, 44 39 C49 45, 54 51, 58 57 C51 54, 46 50, 42 46 C45 51, 47 56, 46 60 C40 55, 35 48, 31 41 C32 47, 34 53, 38 59 C30 53, 24 44, 19 32 L10 20 L18 19 C12 14, 7 10, 4 6 Z" fill="#0B0B0E" transform="translate(-1.5, 2)"/>
+  <!-- Red Pinstripe Outline -->
+  <path d="M4 6 C18 8, 30 14, 38 22 L33 23 C42 31, 51 39, 60 44 C53 43, 48 41, 44 39 C49 45, 54 51, 58 57 C51 54, 46 50, 42 46 C45 51, 47 56, 46 60 C40 55, 35 48, 31 41 C32 47, 34 53, 38 59 C30 53, 24 44, 19 32 L10 20 L18 19 C12 14, 7 10, 4 6 Z" fill="url(#boltGrad)" stroke="#111111" stroke-width="1.8" stroke-linejoin="round"/>
+  <!-- Inner Red Racing Stripe Highlight -->
+  <path d="M9 10 C17 13, 23 17, 27 21 L14 21 L22 33" stroke="#E11D00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Angled "95" Racing Number -->
+  <g transform="translate(29, 28) rotate(-32)">
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Impact, 'Orbitron', Arial Black, sans-serif" font-weight="900" font-style="italic" font-size="19" fill="#000000" stroke="#000000" stroke-width="4.2" stroke-linejoin="round" transform="translate(-1, 1.5)">95</text>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Impact, 'Orbitron', Arial Black, sans-serif" font-weight="900" font-style="italic" font-size="19" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2.6" stroke-linejoin="round">95</text>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Impact, 'Orbitron', Arial Black, sans-serif" font-weight="900" font-style="italic" font-size="19" fill="url(#numGrad)">95</text>
+  </g>
+</svg>

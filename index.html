@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" data-drive-mode="track">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mary Grace Ann N. Babagay | P1 Edition — Computer Engineering Portfolio</title>
+  <meta name="description" content="Portfolio of Mary Grace Ann N. Babagay — 21, 4th Year Bachelor of Science in Computer Engineering at ICCT Cainta Campus. Inspired by the McLaren P1." />
+  <!-- Google Fonts: Orbitron (Automotive Display), Rajdhani (Technical UI), JetBrains Mono (Telemetry) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="gate-locked">
+  <!-- McLaren-Style Fullscreen Ignition Gate ("Tap to Start" / "MY PORTFOLIO") -->
+  <div id="ignition-gate" class="ignition-gate" role="dialog" aria-modal="true" aria-label="Tap to Start My Portfolio">
+    <div class="ignition-gate__bg-glow"></div>
+
+    <!-- Stage 1: McLaren "Tap to Start" / "MY PORTFOLIO" Button -->
+    <button type="button" id="ignition-start-btn" class="mclaren-start-logo" aria-label="Tap to Start My Portfolio">
+      <div class="mclaren-logo-lockup">
+        <!-- Iconic McLaren Papaya Orange Speedmark Swoosh (Top-Right) -->
+        <svg class="mclaren-speedmark-svg" viewBox="0 0 260 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M12 96 C68 42, 162 8, 232 10 C254 11, 262 24, 248 49 C232 78, 198 112, 152 142 C170 106, 174 80, 154 71 C130 60, 74 71, 12 96 Z"
+            fill="#FF8000"
+          />
+        </svg>
+
+        <!-- Main McLaren-Style Wordmark: "Tap to Start" -->
+        <span class="mclaren-wordmark">Tap to Start</span>
+
+        <!-- Sub-label: "M Y   P O R T F O L I O" (Replacing FORMULA 1 TEAM) -->
+        <span class="mclaren-subwordmark">MY&nbsp;&nbsp;PORTFOLIO</span>
+      </div>
+      <span class="mclaren-tap-hint">CLICK OR TAP LOGO TO IGNITE SYSTEM</span>
+    </button>
+
+    <!-- Stage 2: Front of McLaren P1 Zoom-In Reveal -->
+    <div class="ignition-p1-zoom-stage" id="ignition-p1-zoom-stage" aria-hidden="true">
+      <div class="ignition-p1-car-wrap">
+        <img src="mclaren-p1-front.png" alt="McLaren P1 Front View" class="ignition-p1-front-img" />
+        <span class="p1-headlight-flare p1-headlight-flare--left"></span>
+        <span class="p1-headlight-flare p1-headlight-flare--right"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ambient Carbon Fiber & Aerodynamic Airflow Canvas -->
+  <canvas id="aero-canvas" aria-hidden="true"></canvas>
+
+  <!-- Top Telemetry HUD Navigation -->
+  <header class="hud-header" id="top">
+    <div class="hud-header__inner">
+      <a href="#top" class="brand-badge" aria-label="Mary Grace Ann N. Babagay Home">
+        <div class="brand-avatar-p1">
+          <img src="profile.jpg" alt="Mary Grace Ann N. Babagay" />
+        </div>
+        <span class="brand-swoosh">
+          <svg viewBox="0 0 64 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 23C18 8 39 3 60 5C43 9 28 16 14 25C10 24.5 6.5 24 4 23Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <span class="brand-model">MGANB <span class="accent-text">P1™</span></span>
+          <span class="brand-sub">BSCOE // CHASSIS #021</span>
+        </div>
+      </a>
+
+      <!-- Center Drive Mode Selector (Normal / Sport / Track / IPAS) -->
+      <div class="drive-mode-bar" role="group" aria-label="McLaren Active Dynamics Panel">
+        <span class="drive-mode-label">ACTIVE DYNAMICS</span>
+        <div class="drive-mode-buttons">
+          <button class="mode-btn" data-mode="normal" title="Normal Mode — Balanced Efficiency">NORMAL</button>
+          <button class="mode-btn" data-mode="sport" title="Sport Mode — Enhanced Response">SPORT</button>
+          <button class="mode-btn active" data-mode="track" title="Track Mode — Volcano Orange Full Aero">TRACK</button>
+          <button class="mode-btn mode-btn--ipas" data-mode="ipas" title="IPAS Hybrid Boost — Maximum Output">
+            <span class="ipas-dot"></span>IPAS BOOST
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hud-nav" aria-label="Main Navigation">
+        <a href="#cockpit" class="hud-nav__link active" data-section="cockpit"><span>00</span> HOME</a>
+        <a href="#monocoque" class="hud-nav__link" data-section="monocoque"><span>01</span> ABOUT</a>
+        <a href="#powertrain" class="hud-nav__link" data-section="powertrain"><span>02</span> SKILLS</a>
+        <a href="#aerodynamics" class="hud-nav__link" data-section="aerodynamics"><span>03</span> PROJECTS</a>
+        <a href="#pitwall" class="hud-nav__link hud-nav__link--cta" data-section="pitwall">PIT RADIO</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 00 // HOME SECTION -->
+    <section class="section hero-section" id="cockpit">
+      <div class="container hero-grid">
+        <!-- Left Column: Driver & Engineer Telemetry -->
+        <div class="hero-content">
+          <div class="telemetry-pill">
+            <span class="status-led"></span>
+            <span class="mono-tag">SYSTEM ONLINE // ICCT CAINTA CAMPUS — 4TH YEAR BSCOE</span>
+          </div>
+
+          <p class="hero-overline">HYPER-ENGINEERED COMPUTER ARCHITECTURE &amp; SYSTEMS</p>
+          <h1 class="hero-title">
+            MARY GRACE ANN <br />
+            <span class="hero-title__highlight">N. BABAGAY</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Hi! Nice meeting you. I am <strong>Mary Grace Ann N. Babagay</strong> you can call me <strong>RY</strong>, I am <strong>21 Yrs Old</strong>, <strong>Bachelor of Science in Computer Engineering (BSCOE) 4th yr Student</strong> in <strong>ICCT COLLEGES Cainta Campus</strong>, I am a <strong>System Analyst</strong> and <strong>Database Administrator</strong> in our project web development.
+          </p>
+
+          <!-- Direct Telemetry Social & Contact Bar -->
+          <div class="hero-comm-bar">
+            <a href="https://www.facebook.com/100025320497502/" target="_blank" rel="noopener noreferrer" class="comm-pill">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+              <span>FACEBOOK</span>
+            </a>
+            <a href="https://github.com/account" target="_blank" rel="noopener noreferrer" class="comm-pill">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <span>GITHUB</span>
+            </a>
+            <a href="mailto:babagaymary042422@gmail.com" class="comm-pill comm-pill--email">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span>babagaymary042422@gmail.com</span>
+            </a>
+          </div>
+
+          <!-- Key Spec Strip -->
+          <div class="spec-strip">
+            <div class="spec-card">
+              <span class="spec-label">ENGINEER AGE</span>
+              <div class="spec-value"><span class="counter" data-target="21">21</span> <small>YRS</small></div>
+              <span class="spec-meta">EDITION // GEN-04</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">YEAR LEVEL</span>
+              <div class="spec-value">4TH <small>YR</small></div>
+              <span class="spec-meta">SENIOR CAPSTONE READY</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">DEGREE PROGRAM</span>
+              <div class="spec-value">BSCOE</div>
+              <span class="spec-meta">COMPUTER ENGINEERING</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">PROVING GROUND</span>
+              <div class="spec-value">ICCT</div>
+              <span class="spec-meta">CAINTA CAMPUS</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="launch-control-btn">
+              <span class="btn-icon">⚡</span>
+              <span>ENGAGE LAUNCH CONTROL</span>
+            </button>
+            <a href="#aerodynamics" class="btn btn-outline">
+              <span>INSPECT PROJECTS</span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <button class="btn btn-ghost" id="drs-toggle-btn" title="Toggle Drag Reduction System">
+              <span class="drs-indicator" id="drs-indicator"></span>
+              <span>DRS: <strong id="drs-state-text">ACTIVE</strong></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: McLaren P1 Interactive Digital Cluster & Aero Silhouette -->
+        <div class="hero-visual">
+          <div class="p1-cluster-card">
+            <!-- Top Cluster Telemetry Header -->
+            <div class="cluster-top">
+              <div class="cluster-gear">
+                <span class="cluster-label">GEAR / YR</span>
+                <span class="cluster-gear-num" id="gear-readout">4</span>
+              </div>
+              <div class="cluster-rpm-bar-wrap">
+                <div class="cluster-rpm-labels">
+                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span class="redline">7</span><span class="redline">8</span><span class="redline">9</span>
+                </div>
+                <div class="cluster-rpm-bar">
+                  <div class="cluster-rpm-fill" id="rpm-bar-fill"></div>
+                </div>
+                <div class="cluster-telemetry-row">
+                  <span>CLOCK: <strong id="clock-speed">4.80 GHz</strong></span>
+                  <span>DOWNFORCE: <strong id="downforce-val">600 KG</strong></span>
+                  <span>BATTERY: <strong class="cyan-text" id="battery-val">98% IPAS</strong></span>
+                </div>
+              </div>
+              <div class="cluster-speed">
+                <span class="cluster-speed-num" id="speed-readout">350</span>
+                <span class="cluster-label">KM/H // OPS</span>
+              </div>
+            </div>
+
+            <!-- Interactive McLaren P1 Cockpit Portrait & Telemetry Stage -->
+            <div class="p1-blueprint-stage" id="p1-stage" title="Hover or click to rev the McLaren P1 3.8L Twin-Turbo V8!">
+              <div class="p1-stage-hud">
+                <span class="p1-rev-badge" id="p1-rev-badge">🔥 HOVER COCKPIT TO REV V8 + TURBO</span>
+                <button type="button" class="p1-audio-toggle" id="p1-audio-toggle" aria-label="Toggle McLaren P1 Engine Audio">
+                  <span class="audio-wave" id="audio-wave">🔊</span>
+                  <span id="audio-toggle-text">V8 SOUND: READY</span>
+                </button>
+              </div>
+
+              <div class="wind-tunnel-lines" id="wind-lines" aria-hidden="true">
+                <span class="aero-stream s1"></span>
+                <span class="aero-stream s2"></span>
+                <span class="aero-stream s3"></span>
+                <span class="aero-stream s4"></span>
+              </div>
+
+              <!-- Cockpit Box Centerpiece: 3x3 Inch McLaren P1 Framed Portrait with Flanking Spinning Wheels & Exhaust Smoke SVG Backdrop -->
+              <div class="cockpit-portrait-showcase">
+                <!-- Background SVG for Spinning Wheels, Glowing Rotors, Track Lines & Exhaust Smoke -->
+                <svg class="p1-car-svg cockpit-fx-svg" viewBox="0 0 880 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="exhaustFlameGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+                      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.95" />
+                      <stop offset="35%" stop-color="#FF6B00" stop-opacity="0.9" />
+                      <stop offset="75%" stop-color="#FF2A00" stop-opacity="0.6" />
+                      <stop offset="100%" stop-color="#FF2A00" stop-opacity="0" />
+                    </linearGradient>
+                    <radialGradient id="smokeGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#CBD5E1" stop-opacity="0.55" />
+                      <stop offset="55%" stop-color="#64748B" stop-opacity="0.28" />
+                      <stop offset="100%" stop-color="#0F172A" stop-opacity="0" />
+                    </radialGradient>
+                    <filter id="orangeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="6" result="blur" />
+                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                    <filter id="smokeBlur" x="-40%" y="-40%" width="180%" height="180%">
+                      <feGaussianBlur stdDeviation="8" />
+                    </filter>
+                  </defs>
+
+                  <!-- Ground Effect Shadow & Moving Track Asphalt Lines -->
+                  <ellipse cx="440" cy="285" rx="370" ry="15" fill="rgba(255, 95, 0, 0.24)" />
+                  <line class="road-streak" x1="20" y1="285" x2="860" y2="285" stroke="rgba(255, 136, 0, 0.45)" stroke-width="2" stroke-dasharray="28 22" />
+                  <line class="road-streak road-streak--fast" x1="20" y1="291" x2="860" y2="291" stroke="rgba(0, 229, 255, 0.25)" stroke-width="1.5" stroke-dasharray="16 34" />
+
+                  <!-- EXHAUST SMOKE PLUMES & AFTERBURNER FLAMES -->
+                  <g id="p1-exhaust-system" class="p1-exhaust-group">
+                    <circle class="exhaust-smoke p1-smoke-1" cx="725" cy="185" r="16" fill="url(#smokeGrad)" filter="url(#smokeBlur)" />
+                    <circle class="exhaust-smoke p1-smoke-2" cx="755" cy="175" r="22" fill="url(#smokeGrad)" filter="url(#smokeBlur)" />
+                    <circle class="exhaust-smoke p1-smoke-3" cx="788" cy="165" r="28" fill="url(#smokeGrad)" filter="url(#smokeBlur)" />
+                    <circle class="exhaust-smoke p1-smoke-4" cx="155" cy="185" r="16" fill="url(#smokeGrad)" filter="url(#smokeBlur)" />
+                    <circle class="exhaust-smoke p1-smoke-5" cx="120" cy="175" r="24" fill="url(#smokeGrad)" filter="url(#smokeBlur)" />
+                    <circle class="exhaust-smoke p1-smoke-6" cx="805" cy="205" r="32" fill="url(#smokeGrad)" filter="url(#smokeBlur)" />
+
+                    <path class="exhaust-flame flame-top" d="M685 170 C735 160, 785 164, 845 172 C785 182, 735 184, 685 178 Z" fill="url(#exhaustFlameGrad)" filter="url(#orangeGlow)" />
+                    <path class="exhaust-flame flame-bottom" d="M695 215 C740 208, 785 210, 835 218 C785 225, 740 227, 695 222 Z" fill="url(#exhaustFlameGrad)" filter="url(#orangeGlow)" />
+                  </g>
+
+                  <!-- Left Forged P1 Wheel & Glowing Carbon-Ceramic Brake Rotor -->
+                  <g class="p1-wheel" transform="translate(115, 195)">
+                    <circle cx="0" cy="0" r="56" fill="#0D0F14" stroke="#334155" stroke-width="5" />
+                    <g class="wheel-spokes">
+                      <circle cx="0" cy="0" r="48" fill="none" stroke="#FF6B00" stroke-width="2.2" stroke-dasharray="18 10" />
+                      <circle cx="0" cy="0" r="39" fill="none" stroke="rgba(0, 229, 255, 0.35)" stroke-width="1.4" stroke-dasharray="8 14" />
+                      <line x1="0" y1="-44" x2="0" y2="44" stroke="#E2E8F0" stroke-width="2.4" />
+                      <line x1="-44" y1="0" x2="44" y2="0" stroke="#E2E8F0" stroke-width="2.4" />
+                      <line x1="-31" y1="-31" x2="31" y2="31" stroke="#E2E8F0" stroke-width="2.4" />
+                      <line x1="31" y1="-31" x2="-31" y2="31" stroke="#E2E8F0" stroke-width="2.4" />
+                    </g>
+                    <circle class="brake-rotor-glow" cx="0" cy="0" r="30" fill="rgba(30, 41, 59, 0.65)" stroke="#64748B" stroke-width="3" />
+                    <path d="M-26 -15 A28 28 0 0 1 -8 -28 L-4 -15 L-15 -8 Z" fill="#FF6B00" />
+                    <circle cx="0" cy="0" r="9" fill="#0F172A" stroke="#FF6B00" stroke-width="2.5" />
+                  </g>
+
+                  <!-- Right Forged P1 Wheel & Glowing Carbon-Ceramic Brake Rotor -->
+                  <g class="p1-wheel" transform="translate(765, 195)">
+                    <circle cx="0" cy="0" r="56" fill="#0D0F14" stroke="#334155" stroke-width="5" />
+                    <g class="wheel-spokes">
+                      <circle cx="0" cy="0" r="48" fill="none" stroke="#FF6B00" stroke-width="2.2" stroke-dasharray="18 10" />
+                      <circle cx="0" cy="0" r="39" fill="none" stroke="rgba(0, 229, 255, 0.35)" stroke-width="1.4" stroke-dasharray="8 14" />
+                      <line x1="0" y1="-44" x2="0" y2="44" stroke="#E2E8F0" stroke-width="2.4" />
+                      <line x1="-44" y1="0" x2="44" y2="0" stroke="#E2E8F0" stroke-width="2.4" />
+                      <line x1="-31" y1="-31" x2="31" y2="31" stroke="#E2E8F0" stroke-width="2.4" />
+                      <line x1="31" y1="-31" x2="-31" y2="31" stroke="#E2E8F0" stroke-width="2.4" />
+                    </g>
+                    <circle class="brake-rotor-glow" cx="0" cy="0" r="30" fill="rgba(30, 41, 59, 0.65)" stroke="#64748B" stroke-width="3" />
+                    <path d="M15 -24 A28 28 0 0 1 28 -5 L16 -2 L8 -14 Z" fill="#FF6B00" />
+                    <circle cx="0" cy="0" r="9" fill="#0F172A" stroke="#FF6B00" stroke-width="2.5" />
+                  </g>
+                </svg>
+
+                <!-- 3x3 Inch McLaren P1 Framed Photo Inside the Cockpit Box -->
+                <div class="p1-portrait-frame p1-chassis-group" id="p1-chassis-group">
+                  <div class="p1-frame-outer">
+                    <div class="p1-frame-carbon">
+                      <img src="profile.jpg" alt="Mary Grace Ann N. Babagay (RY) — 4th Year BSCOE" class="p1-portrait-img" />
+                      <div class="p1-frame-hud-overlay"></div>
+                    </div>
+                    <!-- McLaren Swoosh & Telemetry Corner Accents -->
+                    <span class="p1-corner p1-corner--tl"></span>
+                    <span class="p1-corner p1-corner--tr"></span>
+                    <span class="p1-corner p1-corner--bl"></span>
+                    <span class="p1-corner p1-corner--br"></span>
+                    <span class="p1-frame-badge">MARY GRACE ANN // BSCOE</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="callout-banner" id="callout-banner">
+                <span class="callout-tag">COCKPIT TELEMETRY</span>
+                <span id="callout-text">Hover or click inside the Cockpit box to hear the McLaren P1 3.8L Twin-Turbo V8 roar, spin the wheels &amp; ignite exhaust smoke!</span>
+              </div>
+            </div>
+
+            <!-- Bottom Cluster Telemetry Bar -->
+            <div class="cluster-footer">
+              <div class="cluster-metric">
+                <span class="metric-name">POWERTRAIN</span>
+                <span class="metric-val">HW + SW HYBRID</span>
+              </div>
+              <div class="cluster-metric">
+                <span class="metric-name">CAMPUS</span>
+                <span class="metric-val">ICCT CAINTA</span>
+              </div>
+              <div class="cluster-metric">
+                <span class="metric-name">CHASSIS CODE</span>
+                <span class="metric-val">MGANB-P1-021</span>
+              </div>
+              <div class="cluster-metric">
+                <span class="metric-name">AERO STATUS</span>
+                <span class="metric-val accent-text" id="aero-mode-status">RACE ACTIVE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 // ABOUT & INFO -->
+    <section class="section" id="monocoque">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="sec-num">01</span>
+            <span class="sec-divider">//</span>
+            <span>ABOUT</span>
+          </div>
+          <h2 class="section-title">BUILT FOR <span class="accent-text">EXTREME PERFORMANCE</span></h2>
+          <p class="section-desc">
+            Just as the McLaren P1 relies on a 90kg carbon fiber MonoCage to house both a 3.8L twin-turbo V8 and an electric IPAS motor, my training in Computer Engineering unites low-level silicon logic with high-level software intelligence.
+          </p>
+        </div>
+
+        <div class="monocoque-grid">
+          <!-- INFO Identification Card -->
+          <div class="driver-card">
+            <div class="driver-card__header">
+              <div>
+                <span class="mono-badge">INFO</span>
+                <h3>MARY GRACE ANN N. BABAGAY</h3>
+              </div>
+              <div class="driver-number">21</div>
+            </div>
+
+            <div class="driver-avatar-box">
+              <div class="passport-p1-frame">
+                <img src="profile.jpg" alt="Mary Grace Ann N. Babagay" class="passport-photo" />
+                <span class="passport-frame-tag">CHASSIS #021</span>
+              </div>
+              <div class="driver-quick-stats">
+                <div class="qs-row">
+                  <span class="qs-key">FULL NAME</span>
+                  <span class="qs-val">Mary Grace Ann N. Babagay ("RY")</span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">PROJECT ROLES</span>
+                  <span class="qs-val accent-text">System Analyst &amp; Database Administrator</span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">AGE</span>
+                  <span class="qs-val">21 Years Old</span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">ACADEMIC STANDING</span>
+                  <span class="qs-val">4th Year Undergraduate</span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">PROGRAM</span>
+                  <span class="qs-val">BS in Computer Engineering (BSCOE)</span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">INSTITUTION</span>
+                  <span class="qs-val">ICCT Colleges — Cainta Campus</span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">EMAIL</span>
+                  <span class="qs-val"><a href="mailto:babagaymary042422@gmail.com" class="qs-link">babagaymary042422@gmail.com</a></span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">FACEBOOK</span>
+                  <span class="qs-val"><a href="https://www.facebook.com/100025320497502/" target="_blank" rel="noopener noreferrer" class="qs-link">facebook.com/100025320497502</a></span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">GITHUB</span>
+                  <span class="qs-val"><a href="https://github.com/account" target="_blank" rel="noopener noreferrer" class="qs-link">github.com/account</a></span>
+                </div>
+                <div class="qs-row">
+                  <span class="qs-key">DESIGN INSPIRATION</span>
+                  <span class="qs-val accent-text">McLaren P1™ (903 BHP Hybrid)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="driver-card__footer">
+              <div class="telemetry-bars-mini">
+                <span>HARDWARE SYNERGY: 95%</span>
+                <span>SOFTWARE VELOCITY: 96%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 // SKILLS -->
+    <section class="section" id="powertrain">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="sec-num">02</span>
+            <span class="sec-divider">//</span>
+            <span>SKILLS</span>
+          </div>
+          <h2 class="section-title"><span class="accent-text">SKILLS</span></h2>
+          <p class="section-desc">
+            Divided like the McLaren P1's M838TQ Twin-Turbo V8 and IPAS Electric Motor: a balanced command of physical hardware engineering and modern software development.
+          </p>
+        </div>
+
+        <div class="powertrain-grid">
+          <!-- Unit A: Hardware & Embedded -->
+          <div class="engine-unit">
+            <div class="engine-unit__header">
+              <div>
+                <span class="engine-tag">UNIT A</span>
+                <h3>HARDWARE &amp; EMBEDDED SYSTEMS</h3>
+              </div>
+              <span class="bhp-badge">727 PS // SILICON</span>
+            </div>
+
+            <div class="skill-dyno-list">
+              <div class="dyno-item">
+                <div class="dyno-info">
+                  <span class="dyno-name">Microcontrollers (Arduino, ESP32, NodeMCU)</span>
+                  <span class="dyno-val">75%</span>
+                </div>
+                <div class="dyno-track"><div class="dyno-fill" style="--percent: 75%"></div></div>
+              </div>
+
+              <div class="dyno-item">
+                <div class="dyno-info">
+                  <span class="dyno-name">Circuit Prototyping, PCB Layout &amp; Diagnostics</span>
+                  <span class="dyno-val">65%</span>
+                </div>
+                <div class="dyno-track"><div class="dyno-fill" style="--percent: 65%"></div></div>
+              </div>
+
+              <div class="dyno-item">
+                <div class="dyno-info">
+                  <span class="dyno-name">Robotics, Automation &amp; Embedded C/C++</span>
+                  <span class="dyno-val">55%</span>
+                </div>
+                <div class="dyno-track"><div class="dyno-fill" style="--percent: 55%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit B: Software & Systems -->
+          <div class="engine-unit engine-unit--ipas">
+            <div class="engine-unit__header">
+              <div>
+                <span class="engine-tag cyan-text">UNIT B</span>
+                <h3>SOFTWARE, WEB &amp; SYSTEMS</h3>
+              </div>
+              <span class="bhp-badge bhp-badge--cyan">179 PS // DIGITAL</span>
+            </div>
+
+            <div class="skill-dyno-list">
+              <div class="dyno-item">
+                <div class="dyno-info">
+                  <span class="dyno-name">HTML5, CSS3, Modern JavaScript &amp; Responsive UI</span>
+                  <span class="dyno-val cyan-text">80%</span>
+                </div>
+                <div class="dyno-track"><div class="dyno-fill dyno-fill--cyan" style="--percent: 80%"></div></div>
+              </div>
+
+              <div class="dyno-item">
+                <div class="dyno-info">
+                  <span class="dyno-name">Database Management (SQL / Firebase / Realtime Telemetry)</span>
+                  <span class="dyno-val cyan-text">75%</span>
+                </div>
+                <div class="dyno-track"><div class="dyno-fill dyno-fill--cyan" style="--percent: 75%"></div></div>
+              </div>
+
+              <div class="dyno-item">
+                <div class="dyno-info">
+                  <span class="dyno-name">Computer Networks, Protocols &amp; Cybersecurity Basics</span>
+                  <span class="dyno-val cyan-text">60%</span>
+                </div>
+                <div class="dyno-track"><div class="dyno-fill dyno-fill--cyan" style="--percent: 60%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 // PROJECTS -->
+    <section class="section" id="aerodynamics">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="sec-num">03</span>
+            <span class="sec-divider">//</span>
+            <span>PROTOTYPES &amp; BUILDS</span>
+          </div>
+          <div class="section-header-flex">
+            <div>
+              <h2 class="section-title">ENGINEERED <span class="accent-text">PROJECTS</span></h2>
+              <p class="section-desc">
+                Selected Computer Engineering builds combining embedded telemetry, intelligent automation, and full-stack interfaces.
+              </p>
+            </div>
+            <div class="project-filters" role="tablist" aria-label="Filter projects by category">
+              <button class="filter-btn active" data-filter="all">ALL UNITS</button>
+              <button class="filter-btn" data-filter="embedded">EMBEDDED / IoT</button>
+              <button class="filter-btn" data-filter="software">SOFTWARE / WEB</button>
+              <button class="filter-btn" data-filter="current">CURRENT PROJECT</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card" data-category="embedded">
+            <div class="project-card__top">
+              <span class="project-code">PROTO-P1 // 01</span>
+              <span class="project-badge">EMBEDDED &amp; IoT</span>
+            </div>
+            <div class="project-card__upper-row">
+              <div class="project-card__upper-text">
+                <h3 class="project-title">Automatic Alcohol Dispenser Prototype</h3>
+                <p class="project-summary">
+                  Touchless automated alcohol dispenser utilizing infrared/ultrasonic proximity sensing, microcontroller relay actuation, and a DC submersible pump for hygienic, instant hand sanitization.
+                </p>
+              </div>
+              <div class="project-thumb-box">
+                <img src="alcohol-dispenser.png" alt="Automatic Alcohol Dispenser Prototype" class="project-thumb-img" />
+              </div>
+            </div>
+            <div class="project-specs">
+              <div>
+                <span>SENSOR</span>
+                <strong>IR / PROXIMITY</strong>
+              </div>
+              <div>
+                <span>ACTUATOR</span>
+                <strong>DC MINI PUMP</strong>
+              </div>
+              <div>
+                <span>STATUS</span>
+                <strong class="green-text">VERIFIED</strong>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span>Arduino / MCU</span>
+              <span>IR Proximity Sensor</span>
+              <span>Relay / Pump Control</span>
+              <span>Embedded C++</span>
+            </div>
+            <button class="btn-inspect" data-project="0">INSPECT TELEMETRY →</button>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card" data-category="software">
+            <div class="project-card__top">
+              <span class="project-code">PROTO-P1 // 02</span>
+              <span class="project-badge project-badge--cyan">SOFTWARE &amp; WEB</span>
+            </div>
+            <div class="project-card__upper-row">
+              <div class="project-card__upper-text">
+                <h3 class="project-title">PH Travelling App</h3>
+                <p class="project-summary">
+                  Philippine travel and destination discovery web application featuring curated tourist spots, route &amp; itinerary planning, and structured database management where I served as System Analyst and Database Administrator.
+                </p>
+              </div>
+              <div class="project-thumb-box project-thumb-box--cyan">
+                <img src="ph-travel-plane.png" alt="Airplane taking off — PH Travelling App" class="project-thumb-img" />
+              </div>
+            </div>
+            <div class="project-specs">
+              <div>
+                <span>ROLE</span>
+                <strong>Database Administrador</strong>
+              </div>
+              <div>
+                <span>PLATFORM</span>
+                <strong>WEB APP</strong>
+              </div>
+              <div>
+                <span>STATUS</span>
+                <strong class="cyan-text">DEPLOYED</strong>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span>System Analysis</span>
+              <span>Database Admin (SQL)</span>
+              <span>HTML5 / CSS3 / JS</span>
+              <span>Responsive Web</span>
+            </div>
+            <button class="btn-inspect" data-project="1">INSPECT TELEMETRY →</button>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card project-card--right" data-category="current">
+            <div class="project-card__top">
+              <span class="project-code">PROTO-P1 // 03</span>
+              <span class="project-badge project-badge--cyan">CURRENT PROJECT</span>
+            </div>
+            <h3 class="project-title">FSL Translator (Filipino Sign Language)</h3>
+            <p class="project-summary">
+              Ongoing 4th-year Computer Engineering project translating Filipino Sign Language (FSL) gestures into readable text/speech to bridge communication accessibility for the Deaf and hard-of-hearing community.
+            </p>
+            <div class="project-specs">
+              <div>
+                <span>DOMAIN</span>
+                <strong>FSL RECOGNITION</strong>
+              </div>
+              <div>
+                <span>ROLE</span>
+                <strong>Database Administrador</strong>
+              </div>
+              <div>
+                <span>STATUS</span>
+                <strong class="cyan-text">IN PROGRESS</strong>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span>Filipino Sign Language</span>
+              <span>Gesture Translation</span>
+              <span>System Analysis</span>
+              <span>Database Architecture</span>
+            </div>
+            <button class="btn-inspect" data-project="2">INSPECT TELEMETRY →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 // PIT WALL & RADIO TRANSMISSION (CONTACT) -->
+    <section class="section" id="pitwall">
+      <div class="container">
+        <div class="pitwall-grid">
+          <div class="pitwall-info">
+            <div class="section-eyebrow">
+              <span class="sec-num">04</span>
+              <span class="sec-divider">//</span>
+              <span>PIT-TO-CAR TELEMETRY LINK</span>
+            </div>
+            <h2 class="section-title">OPEN <span class="accent-text">RADIO CHANNEL</span></h2>
+            <p class="section-desc">
+              Looking for a dedicated 4th-year Computer Engineering intern, capstone collaborator, or junior hardware/software engineer? Transmit a message directly to the cockpit.
+            </p>
+
+            <div class="comm-channels">
+              <div class="comm-item">
+                <span class="comm-label">ENGINEER</span>
+                <strong>Mary Grace Ann N. Babagay (21, 4th Yr BSCOE)</strong>
+              </div>
+              <div class="comm-item">
+                <span class="comm-label">DIRECT EMAIL FREQUENCY</span>
+                <strong><a href="mailto:babagaymary042422@gmail.com" class="qs-link">babagaymary042422@gmail.com</a></strong>
+              </div>
+              <div class="comm-item">
+                <span class="comm-label">FACEBOOK TELEMETRY</span>
+                <strong><a href="https://www.facebook.com/100025320497502/" target="_blank" rel="noopener noreferrer" class="qs-link">facebook.com/100025320497502</a></strong>
+              </div>
+              <div class="comm-item">
+                <span class="comm-label">GITHUB REPOSITORY</span>
+                <strong><a href="https://github.com/account" target="_blank" rel="noopener noreferrer" class="qs-link">github.com/account</a></strong>
+              </div>
+              <div class="comm-item">
+                <span class="comm-label">CAMPUS LOCATION</span>
+                <strong>ICCT Colleges, Cainta Campus, Rizal</strong>
+              </div>
+              <div class="comm-item">
+                <span class="comm-label">AVAILABILITY</span>
+                <strong class="green-text">OPEN FOR OJT / INTERNSHIP / PROJECTS</strong>
+              </div>
+            </div>
+
+            <div class="pitwall-actions">
+              <button class="btn btn-outline" id="print-spec-btn" type="button">
+                <span>🖨️ PRINT TECHNICAL SPEC SHEET (CV)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Pit Radio Form -->
+          <div class="pitwall-form-card">
+            <div class="form-header">
+              <span class="status-led"></span>
+              <span>ENCRYPTED TELEMETRY UPLINK // CHANNEL 021</span>
+            </div>
+            <form id="pit-radio-form" class="pit-form">
+              <div class="form-group">
+                <label for="sender-name">CALLSIGN / YOUR NAME</label>
+                <input type="text" id="sender-name" name="name" placeholder="e.g., Chief Engineer / Recruiter" required />
+              </div>
+              <div class="form-group">
+                <label for="sender-email">RETURN FREQUENCY / EMAIL</label>
+                <input type="email" id="sender-email" name="email" placeholder="engineer@organization.com" required />
+              </div>
+              <div class="form-group">
+                <label for="sender-subject">TRANSMISSION TYPE</label>
+                <select id="sender-subject" name="subject">
+                  <option value="Internship / OJT Opportunity">Internship / OJT Opportunity</option>
+                  <option value="Hardware / Embedded Project Collaboration">Hardware / Embedded Project Collaboration</option>
+                  <option value="Software / Web Development Inquiry">Software / Web Development Inquiry</option>
+                  <option value="General Engineering Inquiry">General Engineering Inquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sender-message">TELEMETRY PAYLOAD / MESSAGE</label>
+                <textarea id="sender-message" name="message" rows="4" placeholder="Transmit project specs, internship details, or message for Mary Grace Ann N. Babagay..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">
+                <span>TRANSMIT TO COCKPIT</span>
+                <span class="btn-arrow">→</span>
+              </button>
+              <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Telemetry Modal -->
+  <div class="modal-backdrop" id="project-modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <span class="mono-tag" id="modal-code">PROTO-P1 // 01</span>
+        <button class="modal-close" id="modal-close" aria-label="Close Telemetry Modal">✕</button>
+      </div>
+      <h3 class="modal-title" id="modal-title">Project Title</h3>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-telemetry-grid" id="modal-specs"></div>
+      <div class="modal-arch">
+        <h4>SYSTEM ARCHITECTURE &amp; ENGINEERING NOTES</h4>
+        <p id="modal-notes"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="hud-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-model">MARY GRACE ANN N. BABAGAY <span class="accent-text">// P1 EDITION</span></span>
+        <p>Age 21 • 4th Year Bachelor of Science in Computer Engineering • ICCT Cainta Campus</p>
+      </div>
+      <div class="footer-meta">
+        <span>CHASSIS: MGANB-021</span>
+        <span>AERO: DRS + IPAS</span>
+        <a href="#top" class="back-to-top">↑ RETURN TO GRID</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
